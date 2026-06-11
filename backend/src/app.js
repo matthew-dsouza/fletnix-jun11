@@ -9,5 +9,5 @@ const app = express();
 connectDB();
 
 app.listen(5000, () => {
-  console.log("Server running");
+    console.log("Server running");
 });
