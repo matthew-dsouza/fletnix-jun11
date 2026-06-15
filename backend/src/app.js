@@ -5,6 +5,7 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 
 import authRoutes from "./routes/authRoutes.js";
+import showRoutes from "./routes/showRoutes.js";
 
 dotenv.config();
 
@@ -18,11 +19,13 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 
+app.use("/api/shows", showRoutes);
+
 app.get("/", (req, res) => {
   res.send("FletNix API Running");
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
   console.log(
