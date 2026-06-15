@@ -78,9 +78,25 @@ export const getShowById = async (
             req.params.id
         );
 
+        const restrictedRatings = ["R"];
+
         if (!show) {
             return res.status(404).json({
-                message: "Show not found ⚠️"
+                message: "Show not found"
+            });
+        }
+
+        const user = await User.findById(
+            req.user.userId
+        );
+
+        if (
+            user.age < 18 &&
+            restrictedRatings.includes(show.rating)
+        ) {
+            return res.status(403).json({
+                message:
+                    "You are not allowed to view this content"
             });
         }
 
