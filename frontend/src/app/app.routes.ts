@@ -3,15 +3,35 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'test',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
 
   {
-    path: 'test',
+    path: 'login',
+
     loadComponent: () =>
-      import('./test.component').then(
-        m => m.TestComponent
+      import(
+        './features/auth/pages/login/login.component'
+      ).then(
+        m => m.LoginComponent
       )
+  },
+
+  {
+    path: 'register',
+
+    loadComponent: () =>
+      import(
+        './features/auth/pages/register/register.component'
+      ).then(
+        m =>
+          m.RegisterComponent
+      )
+  },
+
+  {
+    path: '**',
+    redirectTo: 'login'
   }
 ];

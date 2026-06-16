@@ -1,0 +1,32 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h1 class="text-3xl font-bold mb-6 text-center">
+            Register
+        </h1>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <input type="email" placeholder="Email" formControlName="email" class="w-full border p-3 rounded mb-4" />
+
+            <input type="password" placeholder="Password" formControlName="password"
+                class="w-full border p-3 rounded mb-4" />
+
+            <input type="number" placeholder="Age" formControlName="age" class="w-full border p-3 rounded mb-4" />
+
+            <button class="w-full bg-black text-white p-3 rounded">
+                Register
+            </button>
+        </form>
+
+        <p *ngIf="errorMessage" class="text-red-500 mt-4">
+            {{ errorMessage }}
+        </p>
+
+        <p class="mt-4 text-center">
+            Already have an account?
+
+            <a routerLink="/login" class="text-blue-500">
+                Login
+            </a>
+        </p>
+    </div>
+</div>
