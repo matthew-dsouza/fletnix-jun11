@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
 
 import { ApiService } from '../../../core/services/api.service';
@@ -7,6 +8,7 @@ import { ApiService } from '../../../core/services/api.service';
     providedIn: 'root'
 })
 export class ShowService {
+
     constructor(
         private apiService: ApiService
     ) { }
@@ -17,20 +19,36 @@ export class ShowService {
         type: string
     ): Observable<any> {
 
-        const params = new URLSearchParams();
+        const params =
+            new URLSearchParams();
 
-        params.set('page', page.toString());
+        params.set(
+            'page',
+            page.toString()
+        );
 
         if (search) {
-            params.set('search', search);
+            params.set(
+                'search',
+                search
+            );
         }
 
         if (type) {
-            params.set('type', type);
+            params.set(
+                'type',
+                type
+            );
         }
 
         return this.apiService.get(
             `shows?${params.toString()}`
+        );
+    }
+
+    getShowById(id: string) {
+        return this.apiService.get(
+            `shows/${id}`
         );
     }
 }

@@ -44,6 +44,17 @@ export const routes: Routes = [
   },
 
   {
+    path: 'shows/:id',
+
+    loadComponent: () =>
+      import(
+        './features/shows/pages/details/details.component'
+      ).then(
+        m => m.DetailsComponent
+      )
+  },
+
+  {
     path: '**',
     redirectTo: 'login'
   }

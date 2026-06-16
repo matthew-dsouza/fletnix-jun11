@@ -1,0 +1,87 @@
+<div class="min-h-screen bg-gray-100 p-6">
+
+    <a routerLink="/shows" class="text-blue-600">
+        ← Back to Dashboard
+    </a>
+
+    <div *ngIf="loading" class="mt-8 text-center">
+        Loading...
+    </div>
+
+    <div *ngIf="show" class="bg-white shadow rounded-lg p-8 mt-6">
+
+        <h1 class="text-4xl font-bold mb-4">
+            {{ show.title }}
+        </h1>
+
+        <div class="grid md:grid-cols-2 gap-4">
+
+            <p>
+                <strong>Type:</strong>
+                {{ show.type }}
+            </p>
+
+            <p>
+                <strong>Director:</strong>
+                {{ show.director || 'N/A' }}
+            </p>
+
+            <p>
+                <strong>Country:</strong>
+                {{ show.country }}
+            </p>
+
+            <p>
+                <strong>Release Year:</strong>
+                {{ show.release_year }}
+            </p>
+
+            <p>
+                <strong>Rating:</strong>
+                {{ show.rating }}
+            </p>
+
+            <p>
+                <strong>Duration:</strong>
+                {{ show.duration }}
+            </p>
+
+            <p>
+                <strong>Date Added:</strong>
+                {{ show.date_added }}
+            </p>
+
+            <p>
+                <strong>Genres:</strong>
+                {{ show.listed_in }}
+            </p>
+
+        </div>
+
+        <div class="mt-6">
+
+            <h2 class="text-2xl font-semibold mb-2">
+                Cast
+            </h2>
+
+            <p>
+                {{ show.cast || 'N/A' }}
+            </p>
+
+        </div>
+
+        <div class="mt-6">
+
+            <h2 class="text-2xl font-semibold mb-2">
+                Description
+            </h2>
+
+            <p>
+                {{ show.description }}
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
