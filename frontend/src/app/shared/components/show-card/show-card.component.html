@@ -1,0 +1,21 @@
+<div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+    <h2 class="font-bold text-lg mb-2">
+        {{ show.title }}
+    </h2>
+
+    <p class="text-sm text-gray-600">
+        {{ show.type }}
+    </p>
+
+    <p class="text-sm">
+        {{ show.release_year }}
+    </p>
+
+    <p class="text-sm">
+        Rating: {{ show.rating }}
+    </p>
+
+    <a [routerLink]="['/shows', show._id]" class="inline-block mt-3 text-blue-600">
+        View Details
+    </a>
+</div>

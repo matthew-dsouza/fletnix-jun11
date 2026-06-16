@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
 
 import {
     HttpClient
@@ -22,8 +23,23 @@ export class ApiService {
     get<T>(
         endpoint: string
     ) {
+
+        const token =
+            localStorage.getItem('token');
+
+        const headers =
+            token
+                ? new HttpHeaders({
+                    Authorization:
+                        `Bearer ${token}`
+                })
+                : undefined;
+
         return this.http.get<T>(
-            `${this.apiUrl}/${endpoint}`
+            `${this.apiUrl}/${endpoint}`,
+            {
+                headers
+            }
         );
     }
 

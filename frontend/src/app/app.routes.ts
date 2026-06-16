@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+
   {
     path: '',
     redirectTo: 'login',
@@ -27,6 +28,18 @@ export const routes: Routes = [
       ).then(
         m =>
           m.RegisterComponent
+      )
+  },
+
+  {
+    path: 'shows',
+
+    loadComponent: () =>
+      import(
+        './features/shows/pages/dashboard/dashboard.component'
+      ).then(
+        m =>
+          m.DashboardComponent
       )
   },
 

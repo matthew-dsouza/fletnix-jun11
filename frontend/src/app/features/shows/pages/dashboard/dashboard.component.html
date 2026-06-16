@@ -1,0 +1,65 @@
+<div class="min-h-screen bg-gray-100">
+
+    <div class="bg-black text-white p-4 flex justify-between">
+        <h1 class="text-2xl font-bold">
+            FletNix
+        </h1>
+
+        <button (click)="logout()" class="bg-red-500 px-4 py-2 rounded">
+            Logout
+        </button>
+    </div>
+
+    <div class="p-6">
+
+        <div class="flex flex-col md:flex-row gap-4 mb-6">
+            <input [(ngModel)]="search" placeholder="Search title or cast" class="border p-3 rounded flex-1" />
+
+            <select [(ngModel)]="type" class="border p-3 rounded">
+                <option value="">
+                    All
+                </option>
+
+                <option value="Movie">
+                    Movie
+                </option>
+
+                <option value="TV Show">
+                    TV Show
+                </option>
+            </select>
+
+            <button (click)="searchShows()" class="bg-black text-white px-4 py-2 rounded">
+                Search
+            </button>
+
+        </div>
+
+        <div *ngIf="loading" class="text-center">
+            Loading...
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <app-show-card *ngFor="let show of shows" [show]="show">
+            </app-show-card>
+        </div>
+
+        <div class="flex justify-center gap-4 mt-8">
+            <button (click)="previousPage()" class="bg-gray-300 px-4 py-2 rounded">
+                Previous
+            </button>
+
+            <span>
+                Page {{ currentPage }}
+                of
+                {{ totalPages }}
+            </span>
+
+            <button (click)="nextPage()" class="bg-gray-300 px-4 py-2 rounded">
+                Next
+            </button>
+        </div>
+
+    </div>
+
+</div>
